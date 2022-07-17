@@ -46,7 +46,7 @@ public class ProduitController {
 	@PostMapping(path = "/add")
 	public Produit addProduit(@RequestBody Produit p) {
 
-		return produitService.create(p);
+		return produitService.create(this.produitService.findbyid(p.getId()).get());
 	}
 
 	@DeleteMapping("/{id}")
