@@ -43,6 +43,12 @@ public class ProduitController {
 		return produitService.create(p);
 	}
 
+	@PostMapping(path = "/add")
+	public Produit addProduit(@RequestBody Produit p) {
+
+		return produitService.create(p);
+	}
+
 	@DeleteMapping("/{id}")
 	public void deleteProduit(@PathVariable int id) {
 		produitService.Delete(id);
