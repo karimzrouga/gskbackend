@@ -1,5 +1,7 @@
 package com.example.demo.Controllor;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,15 +25,21 @@ public class ProduitController {
 	private ProduitService produitService;
 	@Autowired
 	private UserService userService;
+
 	@GetMapping(path = "all")
 	public Iterable<Produit> produits() {
 		return produitService.findAll();
 	}
 
+	@GetMapping(path = "{id}")
+	public Produit find(@PathVariable int id) {
+		return produitService.findbyid(id).get();
+	}
+
 	@PostMapping(path = "/add/{id}")
-	public Produit addProduit(@RequestBody Produit p,@PathVariable int id) {
-	User user=	this.userService.findbyid(id).get() ;
-	p.setUser(user);
+	public Produit addProduit(@RequestBody Produit p, @PathVariable int id) {
+		User user = this.userService.findbyid(id).get();
+		p.setUser(user);
 		return produitService.create(p);
 	}
 

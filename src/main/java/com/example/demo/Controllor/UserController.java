@@ -28,16 +28,20 @@ public class UserController {
 
 	@GetMapping(path = "allprod/{phone}")
 	public Iterable<Produit> usersprods(@PathVariable String phone) {
-		ArrayList<Produit>res =new ArrayList<Produit>();
-		Iterable<Produit> l =prodService.findAll() ;
+		ArrayList<Produit> res = new ArrayList<Produit>();
+		Iterable<Produit> l = prodService.findAll();
 		for (Produit produit : l) {
-			if (	produit.getUser().getPhone().compareTo(phone)==0 )
-			{
+			if (produit.getUser().getPhone().compareTo(phone) == 0) {
 				res.add(produit);
 			}
-		
+
 		}
 		return l;
+	}
+
+	@GetMapping(path = "{id}")
+	public User find(@PathVariable int id) {
+		return userService.findbyid(id).get();
 	}
 
 	@GetMapping(path = "all")
@@ -56,7 +60,7 @@ public class UserController {
 	}
 
 	@DeleteMapping("del/{id}")
-	public void deleteuser(@PathVariable int  id) {
+	public void deleteuser(@PathVariable int id) {
 		userService.Delete(id);
 
 	}

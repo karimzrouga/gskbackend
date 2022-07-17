@@ -27,6 +27,7 @@ public class Produit {
 	private String panne;
 	private float prix;
 	private String image;
+	private String categorie;
 	private LocalDateTime dispoAt;
 	@Column(updatable = false)
 	@CreationTimestamp
@@ -42,7 +43,7 @@ public class Produit {
 
 	}
 
-	public Produit(int id, String ref, String panne, float prix, String image, LocalDateTime dispoAt,
+	public Produit(int id, String ref, String categorie, String panne, float prix, String image, LocalDateTime dispoAt,
 			LocalDateTime createdAt, LocalDateTime updatedAt, Boolean state, User user) {
 
 		this.id = id;
@@ -55,6 +56,7 @@ public class Produit {
 		this.updatedAt = updatedAt;
 		this.state = state;
 		this.user = user;
+		this.categorie = categorie;
 	}
 
 	public int getId() {
@@ -137,11 +139,19 @@ public class Produit {
 		this.user = user;
 	}
 
+	public String getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
+	}
+
 	@Override
 	public String toString() {
 		return "Produit [id=" + id + ", ref=" + ref + ", panne=" + panne + ", prix=" + prix + ", image=" + image
-				+ ", dispoAt=" + dispoAt + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", state=" + state
-				+ ", user=" + user + "]";
+				+ ", categorie=" + categorie + ", dispoAt=" + dispoAt + ", createdAt=" + createdAt + ", updatedAt="
+				+ updatedAt + ", state=" + state + ", user=" + user + "]";
 	}
 
 }
