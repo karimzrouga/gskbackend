@@ -35,7 +35,7 @@ public class Produit {
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 	private Boolean state;
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userid")
 	private User user;
 
